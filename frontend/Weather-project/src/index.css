@@ -45,8 +45,14 @@ html, body{
   font-optical-sizing: auto;
   font-style: normal;
   font-size: 2rem;
+  margin-bottom: -2rem;
+  position: fixed;
 }
 
 .CityName{
   margin-left: 67.3rem;
+}
+
+.WeatherIcon{
+  margin-bottom: 50px;
 }

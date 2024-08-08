@@ -46,7 +46,6 @@ function WeatherArea(){
          precipitationProbability={precipitationProbability} 
          windGust={windGust} 
          windSpeed={windSpeed}/>
-         
     </div>
 }
 
