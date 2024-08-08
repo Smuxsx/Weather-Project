@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import getCurrentLocation from './getLocation';
 
 function WeatherArea(){
-    const [data, setData] = useState(null);
+    const [dataString, setDataString] = useState(null);
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
@@ -23,7 +23,7 @@ function WeatherArea(){
             return response.json();
         })
         .then(data => {
-            setData(data);
+            setDataString(data);
             setLoading(false);
         })
         .catch(error => {
@@ -32,13 +32,15 @@ function WeatherArea(){
         })
     }, [])
 
-    console.log(data)
+    const { cloudCover, precipitationProbability, temperature, windGust, windSpeed} = dataString.data.timelines[1].intervals[0].values;
 
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error.message}</div>
     
-    return <div className='CurrentWeather'>
-
+    return <div>
+        <div className='CurrentWeather'>
+            <pre>{temperature}</pre>
+        </div>
     </div>
 }
 
