@@ -10,8 +10,8 @@ env.config();
 const port = process.env.PORTSERVER;
 app.use(cors());
 
-const getTimelineURL = "https://api.tomorrow.io/v4/timelines";
-const apiKey = "dkclAagD70e5HeCECrzh98dNP3OLoEng";
+const getTimelineURL = process.env.APIURL;
+const apikey = process.env.APIKEY;
 
 let location = [51.5072, 0.1276];
 
@@ -30,11 +30,34 @@ const timesteps = ["current", "1d"];
 //Creates a moment object representing the current time in UTC
 const now = moment.utc();
 //Creates a new moment ojbect based on the current time in UTC and adds zero minuts which is equal to the current time
-const starTime = moment.utc(now).add(0, "minutes").toISOString();
+const startTime = moment.utc(now).add(0, "minutes").toISOString();
 //Creates another moment object for the next 6 from the current time and converts it into an ISO 8061 String(standardized way of representing date an time)
-const endTime = moment.utc(now).add(6, "days").toISOString()
+const endTime = moment.utc(now).add(4, "days").toISOString()
 
-const timeZone = "Europe/London"
+const timeZone = "Europe/London";
+
+const getTimelineParameters =  queryString.stringify({
+    apikey,
+    location,
+    fields,
+    units,
+    timesteps,
+    startTime,
+    endTime,
+    timeZone,
+}, {arrayFormat: "comma"});
+
+
+app.get('/weather', async (req, res) => {
+    try {
+        const response = await axios.get(getTimelineURL + "?" + getTimelineParameters)
+        res.json(response.data)
+    } catch (error) {
+        console.log(getTimelineParameters)
+        console.error('Failed to make request:', error.message);
+        res.status(500).send('Falied to fetch activity.')
+    }
+});
 
 app.get("/test", (req, res) => {
     res.json("Hello World")
