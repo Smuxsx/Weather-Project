@@ -55,7 +55,7 @@ app.get('/weather', async (req, res) => {
     } catch (error) {
         console.log(getTimelineParameters)
         console.error('Failed to make request:', error.message);
-        res.status(500).send('Falied to fetch activity.')
+        res.status(500).send('Failed to fetch activity.')
     }
 });
 
