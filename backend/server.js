@@ -3,7 +3,8 @@ import axios from 'axios';
 import env from "dotenv"
 import cors from "cors"
 import moment from 'moment';
-import queryString from "query-string"
+import queryString from "query-string";
+
 
 const app = express();
 env.config();

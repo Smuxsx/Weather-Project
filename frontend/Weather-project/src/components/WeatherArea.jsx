@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import getCurrentLocation from './getLocation';
+import WeatherContent from './WeatherContent';
 
 function WeatherArea(){
     const [dataString, setDataString] = useState(null);
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
     // getCurrentLocation()
@@ -34,16 +35,18 @@ function WeatherArea(){
 
     const { cloudCover, precipitationProbability, temperature, windGust, windSpeed} = dataString.data.timelines[1].intervals[0].values;
 
+
     if (loading) return <div>Loading...</div>
     if (error) return <div>{error.message}</div>
     
     return <div>
-        <div className="CityName">
-            <h1 style={{fontFamily: "Edu AU VIC WA NT Hand", fontSize: "2rem"}}>London</h1>
-        </div>
-        <div className='CurrentWeather'>
-            <pre className='Data'>{temperature + "°"}</pre>
-        </div>
+        <WeatherContent
+         temperature={temperature} 
+         cloudCover={cloudCover} 
+         precipitationProbability={precipitationProbability} 
+         windGust={windGust} 
+         windSpeed={windSpeed}/>
+         
     </div>
 }
 
