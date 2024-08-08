@@ -38,8 +38,11 @@ function WeatherArea(){
     if (error) return <div>{error.message}</div>
     
     return <div>
+        <div className="CityName">
+            <h1 style={{fontFamily: "Edu AU VIC WA NT Hand", fontSize: "2rem"}}>London</h1>
+        </div>
         <div className='CurrentWeather'>
-            <pre>{temperature}</pre>
+            <pre className='Data'>{temperature + "°"}</pre>
         </div>
     </div>
 }
