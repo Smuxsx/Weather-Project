@@ -4,7 +4,6 @@ body{
 
 .IconDiv{
   display: flex;
-  justify-content: center;
   align-items: center;
   padding-top: 3.5rem;
 }
@@ -24,7 +23,19 @@ html, body{
 
 .Header{
   background-color: #7FA1C3;
-  height: 10rem;
+  height: 8rem;
   margin: 0;
   padding: 0;
+  margin-bottom: 4rem;
+}
+
+.CurrentWeather{
+  display: flex;
+  background-color: #E2DAD6;
+  height: 12rem;
+  width: 12rem;
+  border-radius: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 65rem;
 }
