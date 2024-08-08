@@ -5,7 +5,7 @@ body{
 .IconDiv{
   display: flex;
   align-items: center;
-  padding-top: 3.5rem;
+  padding-top: 1.5rem;
 }
 
 .Icon{
@@ -23,7 +23,7 @@ html, body{
 
 .Header{
   background-color: #7FA1C3;
-  height: 8rem;
+  height: 6rem;
   margin: 0;
   padding: 0;
   margin-bottom: 4rem;
