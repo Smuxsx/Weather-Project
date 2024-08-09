@@ -4,7 +4,6 @@ import CityName from './CityName';
 
 function WeatherContent(props){
     return <div>
-        <CityName />
         <div className='CurrentWeather'>
             <WbSunnyIcon className="WeatherIcon" style={{ fontSize: "3.5rem"}}/>
             <pre className='Data'>{props.temperature + "°"}</pre>
