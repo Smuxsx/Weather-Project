@@ -19,7 +19,12 @@ function WeatherArea(){
 
     useEffect(() => {
         const storedData = localStorage.getItem("weatherData");
-        if (storedData != null){
+        const storedTimeStamp = localStorage.getItem("weatherDataTimeStamp")
+        const now = new Date().getTime();
+
+        const expiryTime = 60 * 60 * 1000; // 1 Hour
+        
+        if (storedData != null && storedTimeStamp && now - storedTimeStamp < expiryTime){
             setDataString(JSON.parse(storedData));
             setLoading(false)
         } else {
@@ -29,7 +34,7 @@ function WeatherArea(){
 
 
 
-    if (loading) return <div>Loading...</div>
+    if (loading) return <div className="lds-facebook"><div></div><div></div><div></div></div>
     if (error) return <div>{error.message}</div>
 
     return <div>
