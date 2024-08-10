@@ -2,6 +2,13 @@ body{
   background-color: #F5EDED;
 }
 
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+
 .IconDiv{
   display: flex;
   align-items: center;
@@ -29,6 +36,12 @@ html, body{
   margin-bottom: 4rem;
 }
 
+.box0Div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .CurrentWeather{
   display: flex;
   background-color: #E2DAD6;
@@ -37,7 +50,6 @@ html, body{
   border-radius: 2rem;
   align-items: center;
   justify-content: center;
-  margin-left: 65rem;
 }
 
 .Data{
@@ -50,7 +62,8 @@ html, body{
 }
 
 .CityName{
-  margin-left: 67.3rem;
+  display: flex;
+  justify-content: center;
 }
 
 .WeatherIcon{
@@ -106,4 +119,21 @@ html, body{
 .loading{
   display: flex;
   justify-content: center;
+}
+
+.daysTemp{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.viewPortDaysTemp{
+  width: 100vw;
+  height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

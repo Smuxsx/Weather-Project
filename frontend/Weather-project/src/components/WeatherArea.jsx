@@ -3,6 +3,7 @@ import getCurrentLocation from './getLocation';
 import WeatherTemperature from './WeatherTemperature';
 import CityName from './CityName';
 import fetchWeather from './fetchWeather';
+import WeatherTempDays from './WeatherTempDays';
 
 function WeatherArea(){
     const [dataString, setDataString] = useState(null);
@@ -45,6 +46,7 @@ function WeatherArea(){
          precipitationProbability={dataString.data.timelines[1].intervals[0].values.precipitationProbability} 
          windGust={dataString.data.timelines[1].intervals[0].values.windGust} 
          windSpeed={dataString.data.timelines[1].intervals[0].values.windSpeed}/>
+        <WeatherTempDays />
     </div>
 }
 
