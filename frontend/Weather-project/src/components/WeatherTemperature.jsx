@@ -2,7 +2,7 @@ import React from 'react'
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import CityName from './CityName';
 
-function WeatherContent(props){
+function WeatherTemperature(props){
     return <div>
         <div className='CurrentWeather'>
             <WbSunnyIcon className="WeatherIcon" style={{ fontSize: "3.5rem"}}/>
@@ -11,4 +11,4 @@ function WeatherContent(props){
     </div>
 }
 
-export default WeatherContent
+export default WeatherTemperature;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import getCurrentLocation from './getLocation';
-import WeatherContent from './WeatherContent';
+import WeatherTemperature from './WeatherTemperature';
 import CityName from './CityName';
 import fetchWeather from './fetchWeather';
 
@@ -39,7 +39,7 @@ function WeatherArea(){
 
     return <div>
         <CityName />
-        <WeatherContent
+        <WeatherTemperature
          temperature={dataString.data.timelines[1].intervals[0].values.temperature} 
          cloudCover={dataString.data.timelines[1].intervals[0].values.cloudCover} 
          precipitationProbability={dataString.data.timelines[1].intervals[0].values.precipitationProbability} 
