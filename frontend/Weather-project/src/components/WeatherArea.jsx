@@ -34,7 +34,7 @@ function WeatherArea(){
 
 
 
-    if (loading) return <div className="lds-facebook"><div></div><div></div><div></div></div>
+    if (loading) return <div className='loading'><div className="lds-facebook"><div></div><div></div><div></div></div></div>
     if (error) return <div>{error.message}</div>
 
     return <div>

@@ -59,7 +59,7 @@ html, body{
 
 .lds-facebook {
   /* change color here */
-  color: #1c4c5b;
+  color: #E2DAD6;
   
 }
 .lds-facebook,
@@ -101,4 +101,9 @@ html, body{
     top: 24px;
     height: 32px;
   }
+}
+
+.loading{
+  display: flex;
+  justify-content: center;
 }
