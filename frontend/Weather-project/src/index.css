@@ -122,12 +122,13 @@ html, body{
 }
 
 .daysTemp{
-  width: 100px;
-  height: 100px;
-  background-color: red;
+  width:  100rem;
+  height: 20rem;
+  background-color: #918987;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 40px;
 }
 
 .viewPortDaysTemp{
@@ -136,4 +137,9 @@ html, body{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 8rem;
+}
+
+.DaysBoxDiv{
+  margin-right: 100px;
 }
