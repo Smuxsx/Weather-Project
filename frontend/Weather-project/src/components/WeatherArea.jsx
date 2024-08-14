@@ -33,10 +33,6 @@ function WeatherArea(){
         }
     }, []);
 
-    // cloudCover={dataString.data.timelines[1].intervals[0].values.cloudCover} 
-    // precipitationProbability={dataString.data.timelines[1].intervals[0].values.precipitationProbability} 
-    // windGust={dataString.data.timelines[1].intervals[0].values.windGust} 
-    // windSpeed={dataString.data.timelines[1].intervals[0].values.windSpeed}
 
     if (loading) return <div className='loading'><div className="lds-facebook"><div></div><div></div><div></div></div></div>
     if (error) return <div>{error.message}</div>
@@ -45,7 +41,12 @@ function WeatherArea(){
         <CityName />
         <WeatherTemperature
          temperature={dataString.data.timelines[1].intervals[0].values.temperature} />
-        <WeatherTempDays temperature={dataString.data.timelines[1].intervals[0].values.temperature}/>
+        <WeatherTempDays
+         temp0={dataString.data.timelines[0].intervals[0].values.temperature}
+         temp1={dataString.data.timelines[0].intervals[1].values.temperature}
+         temp2={dataString.data.timelines[0].intervals[2].values.temperature}
+         temp3={dataString.data.timelines[0].intervals[3].values.temperature}
+         />
     </div>
 }
 
