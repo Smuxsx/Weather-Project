@@ -137,9 +137,27 @@ html, body{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 8rem;
+  margin-top: 5rem;
+}
+
+.viewPrepWind{
+  width: 100vw;
+  height: 25rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .DaysBoxDiv{
   margin: 30px;
+}
+
+.PrepClass{
+  width: 20rem;
+  margin: 0 -7rem
+}
+
+.PrepWind{
+  width: 18rem;
+  height: 18rem;
 }
