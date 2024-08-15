@@ -35,7 +35,7 @@ const startTime = moment.utc(now).add(0, "minutes").toISOString();
 //Creates another moment object for the next 6 from the current time and converts it into an ISO 8061 String(standardized way of representing date an time)
 const endTime = moment.utc(now).add(4, "days").toISOString()
 
-const timeZone = "Europe/London";
+const timeZone = "UCT";
 
 const getTimelineParameters =  queryString.stringify({
     apikey,
@@ -59,6 +59,12 @@ app.get('/weather', async (req, res) => {
         res.status(500).send('Failed to fetch activity.')
     }
 });
+
+app.post("/postData", async(req, res) => {
+    const data = req.body
+
+    console.log(data)
+})
 
 app.get("/test", (req, res) => {
     res.json("Hello World")
