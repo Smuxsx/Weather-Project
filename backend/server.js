@@ -4,11 +4,14 @@ import env from "dotenv"
 import cors from "cors"
 import moment from 'moment';
 import queryString from "query-string";
+import bodyParser from 'body-parser';
   
 
 const app = express();
 env.config();
 const port = process.env.PORTSERVER;
+app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 
 const getTimelineURL = process.env.APIURL;
