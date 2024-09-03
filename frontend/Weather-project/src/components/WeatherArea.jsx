@@ -1,42 +1,19 @@
-import React, {useState, useEffect} from 'react'
-import getCurrentLocation from './getLocation';
+import React, {useState, useEffect, useCallback, useContext} from 'react'
 import WeatherTemperature from './WeatherTemperature';
 import CityName from './CityName';
-import fetchWeather from './fetchWeather';
 import WeatherTempDays from './WeatherTempDays';
 import PrepWind from './PrepWind';
+import useWeatherData from './useWeatherData';
+import { MyLoadingContext } from './UpdatedLoadingContext';
 
 function WeatherArea(){
-    const [dataString, setDataString] = useState(null);
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const { dataString, loading, error } = useWeatherData();
+    const { updatedLoading } = useContext( MyLoadingContext )
 
-    // getCurrentLocation()
-    //     .then(({latitude, longitude}) => {
-    //         console.log(latitude + " " + longitude)
-    //     })
-    //     .catch((error) =>{
-    //         console.log(error)
-    //     })
-
-    useEffect(() => {
-        const storedData = localStorage.getItem("weatherData");
-        const storedTimeStamp = localStorage.getItem("weatherDataTimeStamp")
-        const now = new Date().getTime();
-
-        const expiryTime = 60 * 60 * 1000; // 1 Hour
-        
-        if (storedData != null && storedTimeStamp && now - storedTimeStamp < expiryTime){
-            setDataString(JSON.parse(storedData));
-            setLoading(false)
-        } else {
-            fetchWeather(setDataString, setError, setLoading);
-        }
-    }, []);
-
-
+    if (updatedLoading) return <div className='loading'><div className="lds-facebook"><div></div><div></div><div></div></div></div>
     if (loading) return <div className='loading'><div className="lds-facebook"><div></div><div></div><div></div></div></div>
     if (error) return <div>{error.message}</div>
+
 
     return <div>
         <CityName />

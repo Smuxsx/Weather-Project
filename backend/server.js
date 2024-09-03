@@ -17,7 +17,15 @@ app.use(cors());
 const getTimelineURL = process.env.APIURL;
 const apikey = process.env.APIKEY;
 
+
 let location = [51.5072, 0.1276];
+// let IsLocated = false
+
+// if(IsLocated){
+//     // Pass
+// } else {
+//     location = [51.5072, 0.1276]
+// }
 
 const fields = [
     "temperature",
@@ -54,19 +62,43 @@ const getTimelineParameters =  queryString.stringify({
 
 app.get('/weather', async (req, res) => {
     try {
-        const response = await axios.get(getTimelineURL + "?" + getTimelineParameters)
-        res.json(response.data)
+        const response = await axios.get(getTimelineURL + "?" + getTimelineParameters);
+        res.json(response.data);
     } catch (error) {
-        console.log(getTimelineParameters)
+        console.log(getTimelineParameters);
         console.error('Failed to make request:', error.message);
-        res.status(500).send('Failed to fetch activity.')
+        res.status(500).send('Failed to fetch activity.');
     }
 });
 
-app.post("/postData", async(req, res) => {
-    const data = req.body
+app.post("/postData", async (req, res) => {
+    const data = req.body.CityName;    
+    try {
+        const response = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${data}&key=${process.env.APIGEOCODE}`);
+        let lat = response.data.results[0].geometry.lat;
+        let lng = response.data.results[0].geometry.lng;
+        console.log(lat);
+        console.log(lng);
+        const Updatedlocation = [lat, lng];
+        console.log(Updatedlocation);
 
-    console.log(data)
+        const getUpdatedTimelineParameters =  queryString.stringify({
+            apikey,
+            location: Updatedlocation,
+            fields,
+            units,
+            timesteps,
+            startTime,
+            endTime,
+            timeZone,
+        }, {arrayFormat: "comma"});
+        
+        const weatherResponse = await axios.get(getTimelineURL + "?" + getUpdatedTimelineParameters);
+        res.json(weatherResponse.data);
+   } catch (error) {
+        console.error('Failed to make request:', error.message);
+        res.status(500).send('Falied to fetch activity.');
+    }
 })
 
 app.get("/test", (req, res) => {

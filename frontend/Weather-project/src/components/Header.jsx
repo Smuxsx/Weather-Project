@@ -1,38 +1,23 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import StormIcon from '@mui/icons-material/Storm';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchIcon from '@mui/icons-material/Search';
-import CityName from './CityName';
+import handleSubmit from './HandleSubmit';
+import { MyContext } from './MyContext';
+import { MyLoadingContext } from './UpdatedLoadingContext';
 
 function Header(){
     const [Data, setData] = useState("hello")
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        fetch('http://localhost:4000/postData', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({CityName: Data})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Success", data)
-        })
-        .catch((error) => {
-            console.error("Error:", error)
-        })
-    };
-
+    const { setUpdatedData } = useContext(MyContext)
+    const { setUpdatedLoading } = useContext(MyLoadingContext)
+ 
     return <header className='Header'>
         <div className='IconDiv'>
             <div>
                 <h1 className='Icon'><StormIcon fontSize='large'/> Weather App</h1>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(event) => {handleSubmit(event, Data, setUpdatedData, setUpdatedLoading)}}>
                 <TextField
                  id="filled-basic"
                  label="Enter a city Name"
