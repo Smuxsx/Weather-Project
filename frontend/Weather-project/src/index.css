@@ -161,3 +161,14 @@ html, body{
   width: 18rem;
   height: 18rem;
 }
+
+.ErrorHandler{
+  width: 28rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.ErrorHandlerText{
+  color: red;
+}
